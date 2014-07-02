@@ -4,7 +4,7 @@ MooseX::Role::Pluggable - add plugins to your Moose classes
 
 # VERSION
 
-version 0.04
+version 0.05
 
 # SYNOPSIS
 
@@ -15,6 +15,20 @@ version 0.04
     my $moose = MyMoose->new({
       plugins => [ 'Antlers' , 'Tail' , '+After::Market::GroundEffectsPackage' ] ,
       # other args here
+    });
+
+    or
+
+    my $moose = MyMoose->new({
+      plugins  => {
+        'Antlers' => {
+          long => 1,
+        },
+        'Tail' => {
+          short => 1,
+        },
+        '+After::Market::GroundEffectsPackage' => {},
+      }
     });
 
     foreach my $plugin ( @{ $moose->plugin_list } ) {
@@ -71,7 +85,7 @@ same order as the plugins array ref passed in during object creation.
 
 Looks for a method named $method\_name in each plugin in the plugin list. If a
 method of given name is found, it will be run. (N.b., this is essentially the
-`foreach` loop from the ["SYNOPSIS"](#SYNOPSIS).)
+`foreach` loop from the ["SYNOPSIS"](#synopsis).)
 
 # AUTHOR
 
@@ -79,8 +93,8 @@ John SJ Anderson, `genehack@genehack.org`
 
 # SEE ALSO
 
-[MooseX::Role::Pluggable::Plugin](http://search.cpan.org/perldoc?MooseX::Role::Pluggable::Plugin), [MooseX::Object::Pluggable](http://search.cpan.org/perldoc?MooseX::Object::Pluggable),
-[Object::Pluggable](http://search.cpan.org/perldoc?Object::Pluggable)
+[MooseX::Role::Pluggable::Plugin](https://metacpan.org/pod/MooseX::Role::Pluggable::Plugin), [MooseX::Object::Pluggable](https://metacpan.org/pod/MooseX::Object::Pluggable),
+[Object::Pluggable](https://metacpan.org/pod/Object::Pluggable)
 
 # COPYRIGHT AND LICENSE
 
